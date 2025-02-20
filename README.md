@@ -1,6 +1,6 @@
-# Mini Load 
+# Mini Load - Lightweight HTTP Load Testing CLI
 
-Mini Load is a simple and lightweight Go package for performing HTTP load tests. It allows you to send multiple concurrent requests to a specified URL and measure response times, success rates, and failures.
+Mini Load is a simple and lightweight command-line tool for performing HTTP load tests. It allows you to send multiple concurrent requests to a specified URL and measures response times, success rates, and failures.
 
 ## Features
 - Send concurrent HTTP requests
@@ -10,48 +10,45 @@ Mini Load is a simple and lightweight Go package for performing HTTP load tests.
 
 ## Installation
 
-Install Mini Load using Go modules:
+You can install Mini Load using `go install`:
 
 ```sh
-go get github.com/yourusername/miniload
+go install github.com/yourusername/miniload@latest
+```
+
+Ensure that `$GOBIN` is in your `PATH` so you can run `miniload` from anywhere:
+
+```sh
+export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
 ## Usage
 
-Import the package and use it in your Go application:
+Run Mini Load with the following command:
 
-```go
-package main
-
-import (
-	"fmt"
-	"github.com/yourusername/miniload"
-)
-
-func main() {
-	results := miniload.RunTest("https://example.com", 10, 100)
-	fmt.Println(results)
-}
+```sh
+miniload -url "https://example.com" -c 10 -t 100
 ```
 
-### Function Parameters:
-- `url` (**string**): The target URL to test.
-- `concurrency` (**int**): Number of concurrent requests.
-- `totalRequests` (**int**): Total number of requests to send.
+### Parameters:
+- `-url` (**required**): The target URL to test.
+- `-c` (**optional**, default: 1): Number of concurrent requests.
+- `-t` (**optional**, default: 10): Total number of requests to send.
 
 ### Example:
-```go
-results := miniload.RunTest("https://api.example.com", 5, 50)
-fmt.Println(results)
+```sh
+miniload -url "https://api.example.com" -c 5 -t 50
 ```
 This will send 50 requests to `https://api.example.com`, with a concurrency level of 5.
 
 ## Output Example
 ```sh
+--- miniload ---
 Total requests: 100
 Requests succeeded: 95
 Requests failed: 5
 Average duration: 120ms
+--- END ---
 ```
 
 ## License
