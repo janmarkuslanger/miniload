@@ -13,7 +13,7 @@ Mini Load is a simple and lightweight command-line tool for performing HTTP load
 You can install Mini Load using `go install`:
 
 ```sh
-go install github.com/yourusername/miniload@latest
+go install github.com/janmarkuslanger/miniload@latest
 ```
 
 Ensure that `$GOBIN` is in your `PATH` so you can run `miniload` from anywhere:
